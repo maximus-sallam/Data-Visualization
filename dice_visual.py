@@ -2,13 +2,13 @@ import pygal
 
 from die import Die
 
-# Create two D6 dice.
-die_1 = Die()
-die_2 = Die()
+# Create two D8 dice.
+die_1 = Die(8)
+die_2 = Die(8)
 
 # Make some rolls, and store results in a list.
 results = []
-for roll_num in range(1000):
+for roll_num in range(5000000):
     result = die_1.roll() + die_2.roll()
     results.append(result)
 
@@ -24,10 +24,10 @@ for value in range(2, max_result+1):
 # Visualize the results.
 hist = pygal.Bar()
 
-hist.title = "Results of rolling two D6 dice 1,000 times."
+hist.title = "Results of rolling two D8 dice 5,000,000 times."
 hist.x_labels = x_labels
 hist.x_title = "Result"
 hist.y_title = "Frequency of Result"
 
-hist.add('D6 + D6', frequencies)
+hist.add('D8 + D8', frequencies)
 hist.render_to_file('dice_visual.svg')
